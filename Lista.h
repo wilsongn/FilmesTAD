@@ -13,15 +13,23 @@ typedef struct lista{
     int tamanho;
 }Lista;
 
+void nao_encontrado();
+
 void criar_lista(Lista *lista);
 
 void imprime_filme(Filme * filme);
 
-No * busca_datalancamento(Lista * lista, int dia, int mes, int ano);
+void busca_sinopse(Lista lista, char * sinopse);
 
-No * busca_avaliacao(Lista * lista, int avaliacaoBuscada);
+void busca_datalancamento(Lista lista, short int dia, short int mes, short int ano);
 
-No * busca_codigo(Lista * lista, int codigoBuscado);
+void busca_avaliacao(Lista lista, int avaliacaoBuscada);
+
+void busca_codigo(Lista lista, int codigoBuscado);
+
+void busca_genero(Lista lista, char * genero);
+
+void busca_titulo(Lista lista, char * titulo);
 
 void remover_da_lista(Lista *lista, Filme * filme);
 
@@ -32,5 +40,7 @@ void insere_filme_inicio(Lista *lista, Filme * filme);
 void insere_filme_fim(Lista *lista, Filme * filme);
 
 void insere_filme_meio(Lista *lista, Filme * filme, int codigoAnterior);
+
+No * getfilme_codigo(Lista * lista, int codigoBuscado);
 
 #endif

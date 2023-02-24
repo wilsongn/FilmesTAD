@@ -9,6 +9,12 @@ void criar_lista(Lista *lista){
     lista->tamanho = 0;
 }
 
+void nao_encontrado(){
+    printf("+------------------------------------------+\n");
+    printf("|       [!] Filme não encontrado [!]       |\n");
+    printf("+------------------------------------------+\n");
+}
+
 void insere_filme_inicio(Lista *lista, Filme * filme){
     No * novo = (No*)malloc(sizeof(No));
 
@@ -70,37 +76,107 @@ void insere_filme_meio(Lista *lista, Filme * filme, int codigoAnterior){
     }
 }
 
-No * busca_datalancamento(Lista * lista, int dia, int mes, int ano){
-    No *aux;
-    No *no = NULL;
-
-    aux = lista->inicio;
-    while(aux != NULL && aux->filme->dia != dia && aux->filme->mes != mes && aux->filme->ano != ano){
-        aux = aux->proximo;
+void busca_datalancamento(Lista lista, short int dia, short int mes, short int ano){
+    No *no = lista.inicio;
+    int a = 0;
+    while(no){
+        if(no->filme->dia == dia && no->filme->mes == mes && no->filme->ano == ano){
+            printf("+------------------------------------------+\n");
+            printf("Código: %d\n", no->filme->codigo);
+            printf("Titulo: %s\n", no->filme->titulo);
+            printf("Genero: %s\n", no->filme->genero);
+            printf("Sinopse: %s\n", no->filme->sinopse);
+            printf("Avaliação: %.1lf\n", no->filme->avaliacao);
+            printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
+            printf("+------------------------------------------+\n");
+            a++;
+        }
+        no = no->proximo;
     }
-    if(aux != NULL){
-        no = aux;
-    }
-    
-    return no;
+    if(a == 0) nao_encontrado();
 }
 
-No * busca_avaliacao(Lista * lista, int avaliacaoBuscada){
-    No *aux;
-    No *no = NULL;
-
-    aux = lista->inicio;
-    while(aux != NULL && aux->filme->avaliacao != avaliacaoBuscada){
-        aux = aux->proximo;
+void busca_avaliacao(Lista lista, int avaliacaoBuscada){
+    No *no = lista.inicio;
+    int a = 0;
+    while(no){
+        if(no->filme->avaliacao == avaliacaoBuscada){
+            printf("+------------------------------------------+\n");
+            printf("Código: %d\n", no->filme->codigo);
+            printf("Titulo: %s\n", no->filme->titulo);
+            printf("Genero: %s\n", no->filme->genero);
+            printf("Sinopse: %s\n", no->filme->sinopse);
+            printf("Avaliação: %.1lf\n", no->filme->avaliacao);
+            printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
+            printf("+------------------------------------------+\n");
+            a++;
+        }
+        no = no->proximo;
     }
-    if(aux != NULL){
-        no = aux;
-    }
-    
-    return no;
+    if(a == 0) nao_encontrado();
 }
 
-No * busca_codigo(Lista * lista, int codigoBuscado){
+void busca_titulo(Lista lista, char * titulo){
+    No *no = lista.inicio;
+    int a = 0;
+    while(no){
+        if(!strcmp(titulo, no->filme->titulo)){
+            printf("+------------------------------------------+\n");
+            printf("Código: %d\n", no->filme->codigo);
+            printf("Titulo: %s\n", no->filme->titulo);
+            printf("Genero: %s\n", no->filme->genero);
+            printf("Sinopse: %s\n", no->filme->sinopse);
+            printf("Avaliação: %.1lf\n", no->filme->avaliacao);
+            printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
+            printf("+------------------------------------------+\n");
+            a++;
+        }
+        no = no->proximo;
+    }
+    if(a == 0) nao_encontrado();
+}
+
+void busca_genero(Lista lista, char * genero){
+    No *no = lista.inicio;
+    int a = 0;
+    while(no){
+        if(!strcmp(genero, no->filme->genero)){
+            printf("+------------------------------------------+\n");
+            printf("Código: %d\n", no->filme->codigo);
+            printf("Titulo: %s\n", no->filme->titulo);
+            printf("Genero: %s\n", no->filme->genero);
+            printf("Sinopse: %s\n", no->filme->sinopse);
+            printf("Avaliação: %.1lf\n", no->filme->avaliacao);
+            printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
+            printf("+------------------------------------------+\n");
+            a++;
+        }
+        no = no->proximo;
+    }
+    if(a == 0) nao_encontrado();
+}
+
+void busca_sinopse(Lista lista, char * sinopse){
+    No *no = lista.inicio;
+    int a = 0;
+    while(no){
+        if(!strcmp(sinopse, no->filme->sinopse)){
+            printf("+------------------------------------------+\n");
+            printf("Código: %d\n", no->filme->codigo);
+            printf("Titulo: %s\n", no->filme->titulo);
+            printf("Genero: %s\n", no->filme->genero);
+            printf("Sinopse: %s\n", no->filme->sinopse);
+            printf("Avaliação: %.1lf\n", no->filme->avaliacao);
+            printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
+            printf("+------------------------------------------+\n");
+            a++;
+        }
+        no = no->proximo;
+    }
+    if(a == 0) nao_encontrado();
+}
+
+No * getfilme_codigo(Lista * lista, int codigoBuscado){
     No *aux;
     No *no = NULL;
 
@@ -115,16 +191,35 @@ No * busca_codigo(Lista * lista, int codigoBuscado){
     return no;
 }
 
+void busca_codigo(Lista lista, int codigoBuscado){
+    No *no = lista.inicio;
+    int a = 0;
+    while(no){
+        if(no->filme->codigo == codigoBuscado){
+            printf("+------------------------------------------+\n");
+            printf("Código: %d\n", no->filme->codigo);
+            printf("Titulo: %s\n", no->filme->titulo);
+            printf("Genero: %s\n", no->filme->genero);
+            printf("Sinopse: %s\n", no->filme->sinopse);
+            printf("Avaliação: %.1lf\n", no->filme->avaliacao);
+            printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
+            printf("+------------------------------------------+\n");
+        }
+        no = no->proximo;
+    }
+    if(a == 0) nao_encontrado();
+}
+
 void imprime_filme(Filme * filme){
     system("cls");
-    printf("+------------------------------------------+\n");;
+    printf("+------------------------------------------+\n");
     printf("Código: %d\n", filme->codigo);
     printf("Titulo: %s\n", filme->titulo);
     printf("Genero: %s\n", filme->genero);
     printf("Sinopse: %s\n", filme->sinopse);
     printf("Avaliação: %.1lf\n", filme->avaliacao);
     printf("Data de lançamento: %d/%d/%d\n", filme->dia, filme->mes, filme->ano);
-    printf("+------------------------------------------+\n");;
+    printf("+------------------------------------------+\n");
 }
 
 void remover_da_lista(Lista *lista, Filme * filme){
@@ -168,6 +263,6 @@ void imprimir_lista(Lista lista){
         printf("Avaliação: %.1lf\n", no->filme->avaliacao);
         printf("Data de lançamento: %d/%d/%d\n", no->filme->dia, no->filme->mes, no->filme->ano);
         no = no->proximo;
-        printf("+------------------------------------------+\n");;
+        printf("+------------------------------------------+\n");
     }
 }

@@ -57,7 +57,7 @@ int main(void){
             system("cls");
             printf(" > Por favor, insira o código do filme a ser removido: ");
             scanf("%d", &codigoG);
-            elemento = busca_codigo(&lista, codigoG);
+            elemento = getfilme_codigo(&lista, codigoG);
             if(elemento) remover_da_lista(&lista, elemento->filme);
             else{
                 printf("+------------------------------------------+\n");
@@ -84,50 +84,46 @@ int main(void){
                 switch (op2)
                 {
                 case 1:
-                    //code
+                    system("cls");
+                    printf(" > Por favor, digite o titulo desejado para a busca: ");
+                    scanf(" %[^\n]", titulo);
+                    busca_genero(lista, titulo);
+                    system("pause");
                     break;
                 case 2:
+                    system("cls");
+                    printf(" > Por favor, digite o genero desejado para a busca: ");
+                    scanf(" %[^\n]", genero);
+                    busca_genero(lista, genero);
+                    system("pause");
                     break;
                 case 3:
                     system("cls");
                     printf(" > Por favor, digite a data de estreia do filme no seguinte formato dd mm aaaa: ");
-                    scanf("%d %d %d", &dia, &mes, &ano);
-                    elemento = busca_datalancamento(&lista, dia, mes, ano);
-                    if(elemento != NULL) imprime_filme(elemento->filme);
-                    else{
-                        printf("+------------------------------------------+\n");
-                        printf("|       [!] Filme não encontrado [!]       |\n");
-                        printf("+------------------------------------------+\n");
-                    }
+                    scanf("%hd %hd %hd", &dia, &mes, &ano);
+                    busca_datalancamento(lista, dia, mes, ano);
                     system("pause");
                     break;
                 case 4:
                     system("cls");
                     printf(" > Por favor, uma nota de avaliação de 1 a 10: ");
                     scanf("%d", &avaliacao);
-                    elemento = busca_avaliacao(&lista, avaliacao);
-                    if(elemento != NULL) imprime_filme(elemento->filme);
-                    else{
-                        printf("+------------------------------------------+\n");
-                        printf("|       [!] Filme não encontrado [!]       |\n");
-                        printf("+------------------------------------------+\n");
-                    }
+                    busca_avaliacao(lista, avaliacao);
                     system("pause");
                     break;
                 case 5:
                     system("cls");
                     printf(" > Por favor, digite o código do filme para busca: ");
                     scanf("%d", &codigoG);
-                    elemento = busca_codigo(&lista, codigoG);
-                    if(elemento != NULL) imprime_filme(elemento->filme);
-                    else{
-                        printf("+------------------------------------------+\n");
-                        printf("|       [!] Filme não encontrado [!]       |\n");
-                        printf("+------------------------------------------+\n");
-                    }
+                    busca_codigo(lista, codigoG);
                     system("pause");
                     break;
                 case 6:
+                    system("cls");
+                    printf(" > Por favor, digite a sinopse do filme: ");
+                    scanf(" %[^\n]", sinopse);
+                    busca_sinopse(lista, sinopse);
+                    system("pause");
                     break;
                 default:
                     break;
