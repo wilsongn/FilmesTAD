@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Filme.h"
-#include "Lista.h"
+#include "ListaFilme.h"
+#include "Serie.h"
 
 int main(void){
     Lista lista;
     Filme * filme;
-    No * elemento;
+    NoFilme * elemento;
     int codigoG;
     char titulo[50];
     char genero[20];
@@ -87,7 +88,7 @@ int main(void){
                     system("cls");
                     printf(" > Por favor, digite o titulo desejado para a busca: ");
                     scanf(" %[^\n]", titulo);
-                    busca_genero(lista, titulo);
+                    busca_titulo(lista, titulo);
                     system("pause");
                     break;
                 case 2:
@@ -107,7 +108,7 @@ int main(void){
                 case 4:
                     system("cls");
                     printf(" > Por favor, uma nota de avaliação de 1 a 10: ");
-                    scanf("%d", &avaliacao);
+                    scanf("%lf", &avaliacao);
                     busca_avaliacao(lista, avaliacao);
                     system("pause");
                     break;

@@ -1,7 +1,6 @@
 #ifndef FILME
 #define FILME
 
-
 typedef struct filme{
     char titulo[50];
     char genero[20];
